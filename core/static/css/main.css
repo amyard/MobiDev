@@ -37,3 +37,7 @@
 thead {
     background: #ede8e8;
 }
+
+.pagination {
+    margin-left: 40%;
+}

@@ -24,7 +24,7 @@
 
 
 <!--  TABLE PART HERE  -->
-<table class="table table-bordered table-hover mt-5">
+<table class="table table-bordered table-hover mt-5 mb-5">
     <thead>
         <tr>
             <th>URL</th>
@@ -38,7 +38,7 @@
     <tbody>
         {% for url in urls %}
         <tr>
-            <td style="width:20%;">{{ url.full_url }}</td>
+            <td style="width:25%;">{{ url.full_url }}</td>
             <td style="width:20%;">{{ url.text }}</td>
             <td style="width:5%;">11</td>
             <td style="width:20%;">{{ url.short_url }}</td>
@@ -58,6 +58,37 @@
         {% endfor %}
     </tbody>
 </table>
+
+
+
+<!--  PAGINATION  -->
+
+    {% if urls.has_other_pages %}
+
+        <ul class="pagination">
+            {% if urls.has_previous %}
+              <li><a href="?page={{ urls.previous_page_number }}" class = 'btn btn-outline-primary mb-4 mr-1'>&laquo;</a></li>
+            {% else %}
+              <li class="disabled btn btn-outline-primary mb-4 mr-1"><span>&laquo;</span></li>
+            {% endif %}
+
+            {% for i in urls.paginator.page_range %}
+              {% if urls.number == i %}
+                <li class="active btn btn-outline-primary mb-4 mr-1"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% elif i <= urls.number|add:'2' and i >= urls.number|add:'-2' %}
+                <li><a href="?page={{ i }}" class = 'btn btn-outline-primary mb-4 mr-1'>{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+
+            {% if urls.has_next %}
+              <li><a href="?page={{ urls.next_page_number }}" class = 'btn btn-outline-primary mb-4 mr-1'>&raquo;</a></li>
+            {% else %}
+              <li class="disabled btn btn-outline-primary mb-4 mr-1"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+
+    {% endif %}
+
 
 </div>
 
