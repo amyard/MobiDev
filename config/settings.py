@@ -149,3 +149,8 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATES_PACK = 'bootstrap4'
+
+
+LOGIN_REDIRECT_URL = 'base-view'
+LOGOUT_REDIRECT_URL = 'base-view'
+LOGIN_URL = 'login'
