@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
     <title>
-        {% block title %}DataWiz TestCase {% endblock %}
+        {% block title %}MobiDev TestCase{% endblock %}
     </title>
 
 </head>
@@ -27,7 +27,7 @@
       <div class="d-inline">
           {% if user.is_authenticated or user.is_active %}
               Signed in as <b>{{ request.user.username }}</b>
-              <a href="{% url 'logout' %}" class="ml-3 icons-a"><i class="fas fa-sign-out-alt fa-lg mr-1 icons-color" title="Log Out"></i>Log Out</a>
+              <a href="{% url 'users:logout' %}" class="ml-3 icons-a"><i class="fas fa-sign-out-alt fa-lg mr-1 icons-color" title="Log Out"></i>Log Out</a>
           {% else %}
               <button class="login-btn btn btn-light mr-3" type="button" name="button">
                   <i class="fas fa-sign-in-alt fa-lg mr-1 icons-color" title="Log In"></i>Sign In
@@ -76,8 +76,8 @@
 <!-- HIDE MESSAGES -->
 $(function () {
 
-    $(".login-btn").modalForm({formURL: "{% url 'login' %}"});
-    $(".signup-btn").modalForm({formURL: "{% url 'signup' %}"});
+    $(".login-btn").modalForm({formURL: "{% url 'users:login' %}"});
+    $(".signup-btn").modalForm({formURL: "{% url 'users:signup' %}"});
 
     // Hide message
     $(".alert").fadeTo(5000, 500).slideUp(500, function(){
