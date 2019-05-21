@@ -1,5 +1,9 @@
 /*  HEADER  */
 
+.navbar {
+    background: #ede8e8;
+}
+
 .icons-a {
     padding: 10px 15px;
     border-radius: 5px;
@@ -11,4 +15,25 @@
     text-decoration: none;
     color: #343A40;
     background: #e6e9ed;
+}
+
+
+
+/*  MAIN SECTION  */
+.main-section {
+    width: 80%;
+    margin-left: 10%;
+}
+
+
+/*  FORM  */
+.url-form {
+    border-top: 1px solid #ede8e8;
+    border-bottom: 1px solid #ede8e8;
+}
+
+
+/*  TABLE  */
+thead {
+    background: #ede8e8;
 }

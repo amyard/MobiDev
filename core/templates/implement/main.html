@@ -1,9 +1,64 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 
 
 {% block content %}
 
-    {{ test }}
+<div class="main-section">
+
+<!--  FORM  PART HERE  -->
+<form action="" method="POST" class="mt-5 px-2 py-2 url-form">
+    {% csrf_token %}
+
+    <div class="form-row py-2">
+        <div class="form-group col-md-6 mb-0 ml-3">
+            {{ form.full_url|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0 ml-3">
+            {{ form.short_url|as_crispy_field }}
+        </div>
+        <button type="button" class="submit-btn btn btn-primary px-5 ml-3" formnovalidate="formnovalidate">Create URL</button>
+    </div>
+
+</form>
+
+
+<!--  TABLE PART HERE  -->
+<table class="table table-bordered table-hover mt-5">
+    <thead>
+        <tr>
+            <th>URL</th>
+            <th>Text</th>
+            <th>Clicks</th>
+            <th>Short URL</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for url in urls %}
+        <tr>
+            <td style="width:20%;">{{ url.full_url }}</td>
+            <td style="width:20%;">{{ url.text }}</td>
+            <td style="width:5%;">11</td>
+            <td style="width:20%;">{{ url.short_url }}</td>
+            <td style="width:15%;">{{ url.created }}</td>
+            <td style="width:10%;" class="text-center   ">
+                <button type="button" class="read-url btn btn-sm btn-primary" data-id="">
+                    <span class="fa fa-eye"></span>
+                </button>
+                <button type="button" class="update-url btn btn-sm btn-success" data-id="">
+                    <span class="fas fa-edit"></span>
+                </button>
+                <button type="button" class="delete-url btn btn-sm btn-danger" data-id="">
+                    <span class="fa fa-trash"></span>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
 
 {% endblock %}

@@ -5,8 +5,8 @@ import validators
 
 class UrlForm(forms.ModelForm):
 
-    full_url = forms.URLField(max_length=200, help_text="input page URL", widget=forms.TextInput())
-    short_url = forms.URLField(max_length=200, widget=forms.TextInput())
+    full_url = forms.URLField(label='', max_length=200, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your URL'}))
+    short_url = forms.URLField(label='', max_length=200, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your short URL (optional)'}))
 
     class Meta:
         model = UrlModel
