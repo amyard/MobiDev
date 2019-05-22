@@ -32,6 +32,10 @@
     border-bottom: 1px solid #ede8e8;
 }
 
+.help-inline {
+    color: #c82333;
+}
+
 
 /*  TABLE  */
 thead {

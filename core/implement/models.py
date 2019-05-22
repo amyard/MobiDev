@@ -5,7 +5,7 @@ from model_utils.models import TimeStampedModel
 class UrlModel(TimeStampedModel):
 
     full_url = models.URLField(max_length = 255)
-    short_url = models.CharField(max_length = 255, blank=True)
+    short_url = models.CharField(max_length = 255, blank=True, null=True)
     text = models.TextField(blank=True)
 
     def __str__(self):

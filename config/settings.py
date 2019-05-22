@@ -151,6 +151,6 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATES_PACK = 'bootstrap4'
 
 
-LOGIN_REDIRECT_URL = 'base-view'
-LOGOUT_REDIRECT_URL = 'base-view'
+LOGIN_REDIRECT_URL = 'core:base-view'
+LOGOUT_REDIRECT_URL = 'core:base-view'
 LOGIN_URL = 'users:login'
