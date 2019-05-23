@@ -5,7 +5,11 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 
 from core.implement.models import UrlModel
-from core.implement.forms import UrlForm
+from core.implement.forms import UrlForm, UrlUpdateForm
+
+from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView
+
+
 
 
 class MainUrlView(View):
@@ -53,6 +57,29 @@ class MainUrlView(View):
         return render(self.request, self.template_name, context)
 
 
+
+class UrlDeleteView(BSModalDeleteView):
+    model = UrlModel
+    template_name = 'implement/delete_url.html'
+    success_message = 'Success: URL was deleted.'
+
+    def get_success_url(self, **kwargs):
+        return self.request.META.get('HTTP_REFERER')
+
+
+class UrlUpdateView(BSModalUpdateView):
+    model = UrlModel
+    template_name = 'implement/update_url.html'
+    form_class = UrlUpdateForm
+    success_message = 'Success: URL was updated.'
+
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super(UrlUpdateView, self).get_form_kwargs(*args, **kwargs)
+        kwargs['pk'] = self.kwargs['pk']
+        return kwargs
+
+    def get_success_url(self, **kwargs):
+        return self.request.META.get('HTTP_REFERER')
 
 
 

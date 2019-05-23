@@ -14,7 +14,7 @@
 
 
 <!--  TABLE PART HERE  -->
-<table class="table table-bordered table-hover mt-5 mb-5">
+<table class="table table-bordered table-hover mt-5 mb-5" style="width: 100%;">
     <thead>
         <tr>
             <th>URL</th>
@@ -29,7 +29,7 @@
         {% for url in urls %}
         <tr>
             <td style="width:25%;">{{ url.full_url }}</td>
-            <td style="width:20%;">{{ url.text }}</td>
+            <td style="width:23%;">{{ url.text }}</td>
             <td style="width:5%;">11</td>
             <td style="width:20%;">{{ url.short_url }}</td>
             <td style="width:15%;">{{ url.created }}</td>
@@ -40,10 +40,10 @@
                 <button type="button" class="read-url btn btn-sm btn-primary" data-id="" data-toggle="tooltip" data-placement="bottom" title="Detail URL">
                     <span class="fa fa-eye"></span>
                 </button>
-                <button type="button" class="update-url btn btn-sm btn-success" data-id="" data-toggle="tooltip" data-placement="bottom" title="Update URL">
+                <button type="button" class="update-url btn btn-sm btn-success" data-id="{% url 'update_url' url.pk %}" data-toggle="tooltip" data-placement="bottom" title="Update URL">
                     <span class="fas fa-edit"></span>
                 </button>
-                <button type="button" class="delete-url btn btn-sm btn-danger" data-id="" data-toggle="tooltip" data-placement="bottom" title="Delete URL">
+                <button type="button" class="delete-url btn btn-sm btn-danger" data-id="{% url 'delete_url' url.pk %}" data-toggle="tooltip" data-placement="bottom" title="Delete URL">
                     <span class="fa fa-trash"></span>
                 </button>
             </td>

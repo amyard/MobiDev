@@ -6,6 +6,9 @@ from crispy_forms.layout import Layout, Submit, Row, Column
 
 from core.implement.models import UrlModel
 
+from bootstrap_modal_forms.forms import BSModalForm
+
+
 
 
 class UrlForm(forms.ModelForm):
@@ -47,3 +50,34 @@ class UrlForm(forms.ModelForm):
             self.add_error('short_url', 'Short URL must be unique.')
         return short_url
 
+
+
+
+
+class UrlUpdateForm(BSModalForm):
+    full_url = forms.URLField(label='', max_length=200,
+                              widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your URL'}))
+    short_url = forms.CharField(label='', required=False, max_length=200, widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Your short URL (optional)'}))
+
+    class Meta:
+        model = UrlModel
+        fields = ['full_url', 'short_url']
+
+    def __init__(self, *args, **kwargs):
+        self.pk = kwargs.pop('pk', '')
+        super(UrlUpdateForm, self).__init__(*args, **kwargs)
+
+    def clean_full_url(self):
+        full_url = self.cleaned_data.get('full_url')
+        if not validators.url(full_url):
+            return forms.ValidationError('Incorrect url')
+        if UrlModel.objects.exclude(pk=self.pk).filter(full_url=full_url).exists():
+            self.add_error('full_url', 'Such url already exists in our DB.')
+        return full_url
+
+    def clean_short_url(self):
+        short_url = self.cleaned_data.get('short_url')
+        if short_url and UrlModel.objects.exclude(pk=self.pk).filter(short_url=short_url).exists():
+            self.add_error('short_url', 'Short URL must be unique.')
+        return short_url

@@ -84,6 +84,16 @@ $(function () {
         $(".alert").slideUp(500);
     });
 
+    // Delete url buttons
+    $(".delete-url").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+    });
+
+    // Update url buttons
+    $(".update-url").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+    });
+
     $('[data-toggle="tooltip"]').tooltip();
 });
 </script>

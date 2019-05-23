@@ -18,7 +18,8 @@ class UrlModel(TimeStampedModel):
         verbose_name_plural = 'URLS'
 
     def save(self, *args, **kwargs):
-        if not self.short_url:
-            self.short_url = '/'.join(self.full_url.split('/')[3:])
+        # if not self.short_url:
+        #     self.short_url = '/'.join(self.full_url.split('/')[3:])
+        self.short_url = '/'.join(self.full_url.split('/')[3:])
         self.text = crawling(self.full_url)
         super(UrlModel, self).save(*args, **kwargs)

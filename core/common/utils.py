@@ -22,6 +22,5 @@ def crawling(url):
 
     soup = BeautifulSoup(html, 'html.parser')
     first_tag = soup.body.findChildren()[0].text
-    print(first_tag)
     result = add_trade_mark_sign(first_tag)
     return result
