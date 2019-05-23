@@ -10,10 +10,10 @@
 9.  ~~Модицикая текста.~~
 10. ~~Actions in table with modal: Create, Delete, Update, Parse Url.~~
 11. ~~Actions in table: DetailView - not modal.~~
-12. Admin panel.
+12. ~~Admin panel.~~
 13. ~~Генерация короткого URL.~~
 14. ~~Валидация короткого URL.~~
-15. Populate data.
+15. ~~Populate data.~~
 
 
 ### Todo advanced.
