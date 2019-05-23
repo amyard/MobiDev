@@ -1,3 +1,8 @@
+body, title {
+    color: #808080;
+}
+
+
 /*  HEADER  */
 
 .navbar {
@@ -44,4 +49,44 @@ thead {
 
 .pagination {
     margin-left: 40%;
+}
+
+
+/*  DETAIL  PAGE  */
+.detail-borders, .borders-two {
+    border-radius: 10px;
+    border: 1px solid #ede8e8;
+}
+
+.borders-two {
+    width: 99%;
+    color: black;
+}
+
+.domain {
+    background-color: #ececec;
+    font-size: 1.4em;
+    display:inline-block;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.short-url {
+    font-size: 1.4em;
+    display:inline-block;
+}
+
+
+textarea {
+    border: 1px solid #ede8e8;
+}
+
+.section {
+    width: 49%;
+    display:inline-block;
+}
+
+.detail-buttonms {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    font-weight: bold;
 }

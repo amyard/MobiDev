@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="main-section mt-5">
+
+    <h1>
+        <a href="{{ url.full_url }}">{{ url.full_url }}</a>
+    </h1>
+
+    <h5 class="ml-3 mt-4">Short URL</h5>
+    <div class="w-100 detail-borders">
+        <div class="domain px-3 py-1">
+            <a href="{{ domain }}">{{ domain }}</a>
+        </div>
+        <div class="short-url">
+            <a href="{{ url.full_url }}">{{ url.short_url }}</a>
+        </div>
+    </div>
+
+    <h5 class="ml-3 mt-4">Message</h5>
+    <textarea class="w-100" name="textarea" rows="10">
+        {{ url.text }}
+    </textarea>
+
+    <div class="w-100">
+        <div class="section">
+            <h5 class="ml-3 mt-4">Message</h5>
+            <div class="borders-two px-3 py-1">
+                {{ url.created }}
+            </div>
+        </div>
+
+        <div class="section ml-4">
+            <h5 class="ml-3 mt-4">Clicks</h5>
+            <div class="borders-two px-3 py-1">
+                11
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="update-url btn btn-sm btn-success mt-5 mr-3" data-id="{% url 'core:update_url' url.pk %}">
+        <span class="detail-buttonms">Update URL</span>
+    </button>
+    <button type="button" class="parsing-tag btn btn-sm btn-warning mt-5 mr-3" data-id="{{ url.full_url }}">
+        <span class="detail-buttonms">Crawling first tag of URL</span>
+    </button>
+    <button type="button" class="delete-url btn btn-sm btn-danger mt-5" data-id="{% url 'core:delete_url' url.pk %}">
+        <span class="detail-buttonms">Delete URL</span>
+    </button>
+
+</div>
+
+{% endblock %}

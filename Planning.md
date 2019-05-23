@@ -8,8 +8,8 @@
 7.  Продумать Clicks.
 8.  ~~Пропарсить URL на наличие первого тега.~~
 9.  ~~Модицикая текста.~~
-10. Actions in table with modal: Create, Delete, Update, Parse Url.
-11. Actions in table: DetailView - not modal.
+10. ~~Actions in table with modal: Create, Delete, Update, Parse Url.~~
+11. ~~Actions in table: DetailView - not modal.~~
 12. Admin panel.
 13. ~~Генерация короткого URL.~~
 14. ~~Валидация короткого URL.~~

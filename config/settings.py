@@ -50,6 +50,7 @@ THIRD_PARTY_APPS = [
     'widget_tweaks',
     'bootstrap_modal_forms',
     'crispy_forms',
+    'background_task',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS

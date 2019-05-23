@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import View, ListView
+from django.views.generic import View, ListView, DetailView
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
+from django.urls import reverse
 
 from core.implement.models import UrlModel
 from core.implement.forms import UrlForm, UrlUpdateForm
@@ -59,19 +60,33 @@ class MainUrlView(View):
 
 
 
+
+class UrlDetailView(DetailView):
+    model = UrlModel
+    template_name='implement/url_detail.html'
+    context_object_name = 'url'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(UrlDetailView, self).get_context_data(*args, **kwargs)
+        context['domain'] = '/'.join(self.get_object().full_url.split('/')[:3])+'/'
+        return context
+
+
 class UrlDeleteView(BSModalDeleteView):
     model = UrlModel
-    template_name = 'implement/delete_url.html'
+    template_name = 'implement/url_delete.html'
     success_message = 'Success: URL was deleted.'
 
     def get_success_url(self, **kwargs):
+        if 'url_detail' in self.request.META.get("HTTP_REFERER"):
+            return reverse('core:base-view')
         return self.request.META.get('HTTP_REFERER')
 
 
 
 class UrlUpdateView(BSModalUpdateView):
     model = UrlModel
-    template_name = 'implement/update_url.html'
+    template_name = 'implement/url_update.html'
     form_class = UrlUpdateForm
     success_message = 'Success: URL was updated.'
 
@@ -91,3 +106,5 @@ class FirstTagCrawler(View):
         messages.add_message(self.request, messages.SUCCESS, f'Success: You have got a text from first tag from {url}')
         data = {}
         return JsonResponse(data)
+
+

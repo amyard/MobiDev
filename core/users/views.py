@@ -25,7 +25,7 @@ class CustomLoginView(BSModalLoginView):
     authentication_form = CustomAuthenticationForm
     template_name = 'users/login.html'
     success_message = 'Success: You were successfully logged in.'
-    success_url = reverse_lazy('base-view')
+    success_url = reverse_lazy('core:base-view')
 
 
 
@@ -34,4 +34,4 @@ class SignUpView(BSModalCreateView):
     form_class = CustomUserCreationForm
     template_name = 'users/signup.html'
     success_message = 'Success: Sign up succeeded. You can now Log in.'
-    success_url = reverse_lazy('base-view')
+    success_url = reverse_lazy('core:base-view')
