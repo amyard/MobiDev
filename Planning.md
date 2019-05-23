@@ -20,7 +20,7 @@
 1.  Docker.
 2.  Удалить URL после 14 дней.
 3.  API.
-4.  Ручной парсинг text.
+4.  ~~Ручной парсинг text.~~
 
 
 ### Todo more - if will be more time.

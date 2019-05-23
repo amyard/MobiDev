@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.views.generic import View, ListView
 from django.core.paginator import Paginator
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 
 from core.implement.models import UrlModel
 from core.implement.forms import UrlForm, UrlUpdateForm
+from core.common.utils import crawling
 
 from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView
 
@@ -67,6 +68,7 @@ class UrlDeleteView(BSModalDeleteView):
         return self.request.META.get('HTTP_REFERER')
 
 
+
 class UrlUpdateView(BSModalUpdateView):
     model = UrlModel
     template_name = 'implement/update_url.html'
@@ -82,4 +84,10 @@ class UrlUpdateView(BSModalUpdateView):
         return self.request.META.get('HTTP_REFERER')
 
 
-
+class FirstTagCrawler(View):
+    def get(self, request, *args, **kwargs):
+        url = self.request.GET.get('url')
+        UrlModel.objects.filter(full_url=url).update(text=crawling(url))
+        messages.add_message(self.request, messages.SUCCESS, f'Success: You have got a text from first tag from {url}')
+        data = {}
+        return JsonResponse(data)

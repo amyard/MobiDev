@@ -1,5 +1,6 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
+from core.common.utils import get_short_url
 
 from core.common.utils import crawling
 
@@ -18,8 +19,6 @@ class UrlModel(TimeStampedModel):
         verbose_name_plural = 'URLS'
 
     def save(self, *args, **kwargs):
-        # if not self.short_url:
-        #     self.short_url = '/'.join(self.full_url.split('/')[3:])
-        self.short_url = '/'.join(self.full_url.split('/')[3:])
+        self.short_url = get_short_url(self.full_url)
         self.text = crawling(self.full_url)
         super(UrlModel, self).save(*args, **kwargs)

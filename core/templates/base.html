@@ -99,6 +99,30 @@ $(function () {
 </script>
 
 
+<script>
+
+$(document).ready(function(){
+    $('.parsing-tag').on('click', function(){
+       url = $(this).attr('data-id')
+       text = $(this).parent().closest('tr').find('.url-tag-text').html()
+       data = {
+            'url':url
+       }
+
+       $.ajax({
+            type:'GET',
+            url:'{% url "core:crawler" %}',
+            dataType: 'json',
+            data: data,
+            success: function(data){
+                location.reload();
+            }
+       })
+    });
+});
+
+</script>
+
 {% endblock %}
 
 

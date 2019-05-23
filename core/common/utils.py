@@ -24,3 +24,8 @@ def crawling(url):
     first_tag = soup.body.findChildren()[0].text
     result = add_trade_mark_sign(first_tag)
     return result
+
+
+def get_short_url(full_url):
+    short_url = '/'.join(full_url.split('/')[3:])
+    return short_url
