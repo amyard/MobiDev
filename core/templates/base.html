@@ -26,6 +26,19 @@
 
       <div class="d-inline">
           {% if user.is_authenticated or user.is_active %}
+
+              {% if 'url_detail' in request.get_full_path %}
+              <div class="dropdown">
+                  <button class="dropbtn">Admin Panel</button>
+                  <div class="dropdown-content">
+                      <a href="#" class="parsing-tag" data-item-id="{{ url.full_url }}">Crawling first tag</a>
+                    <a href="#" data-item-id="{% url 'core:update_url' url.pk %}" class="url-update">Update URL</a>
+                    <a href="#" data-item-id="{% url 'core:delete_url' url.pk %}" class="url-delete">Delete URL</a>
+                  </div>
+              </div>
+              {% endif %}
+
+
               Signed in as <b>{{ request.user.username }}</b>
               <a href="{% url 'users:logout' %}" class="ml-3 icons-a"><i class="fas fa-sign-out-alt fa-lg mr-1 icons-color" title="Log Out"></i>Log Out</a>
           {% else %}
@@ -88,10 +101,18 @@ $(function () {
     $(".delete-url").each(function () {
         $(this).modalForm({formURL: $(this).data('id')});
     });
+    // Delete url in ADMIN PANEL
+    $(".url-delete").each(function () {
+        $(this).modalForm({formURL: $(this).data('item-id')});
+    });
 
     // Update url buttons
     $(".update-url").each(function () {
         $(this).modalForm({formURL: $(this).data('id')});
+    });
+    // Update url in ADMIN PANEL
+    $(".url-update").each(function () {
+        $(this).modalForm({formURL: $(this).data('item-id')});
     });
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -103,8 +124,14 @@ $(function () {
 
 $(document).ready(function(){
     $('.parsing-tag').on('click', function(){
-       url = $(this).attr('data-id')
-       text = $(this).parent().closest('tr').find('.url-tag-text').html()
+
+       if (typeof $(this).attr('data-id') !== typeof undefined && $(this).attr('data-id') !== false) {
+            url = $(this).attr('data-id')
+       } else {
+            url = $(this).attr('data-item-id')
+       }
+
+
        data = {
             'url':url
        }
