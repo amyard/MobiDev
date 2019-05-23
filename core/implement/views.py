@@ -12,8 +12,6 @@ from core.common.utils import crawling
 from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView
 
 
-
-
 class MainUrlView(View):
     template_name = 'implement/main.html'
     model = UrlModel

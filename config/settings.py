@@ -50,10 +50,16 @@ THIRD_PARTY_APPS = [
     'widget_tweaks',
     'bootstrap_modal_forms',
     'crispy_forms',
-    'background_task',
+    'django_crontab',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
+
+CRONJOBS = [
+    ('*/300 * * * *', 'core.implement.cron.delete_url_after_14_days')
+]
+
+
 
 
 MIDDLEWARE = [
