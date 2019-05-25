@@ -5,7 +5,9 @@ chardet==3.0.4
 decorator==4.4.0
 Django==2.2.1
 django-bootstrap-modal-forms==1.4.2
+django-compat==1.0.15
 django-crispy-forms==1.7.2
+django-crontab==0.7.1
 django-model-utils==3.1.2
 django-widget-tweaks==1.4.3
 docopt==0.6.2
