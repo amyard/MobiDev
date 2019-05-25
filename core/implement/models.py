@@ -9,6 +9,7 @@ class UrlModel(TimeStampedModel):
     full_url = models.URLField(max_length = 255)
     short_url = models.CharField(max_length = 255, blank=True, null=True)
     text = models.TextField(blank=True, null=True)
+    clicks = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return f'{self.full_url}'

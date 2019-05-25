@@ -106,3 +106,10 @@ class FirstTagCrawler(View):
         return JsonResponse(data)
 
 
+class ClicksCountView(View):
+    def get(self, request, *args, **kwargs):
+        url_pk = self.request.GET.get('ids')
+        click_number = int(self.request.GET.get('click_number'))
+        UrlModel.objects.filter(pk=url_pk).update(clicks=click_number+1)
+        data = { 'number':click_number+1 }
+        return JsonResponse(data)

@@ -150,6 +150,38 @@ $(document).ready(function(){
 
 </script>
 
+
+<script>
+
+    $(document).ready(function(){
+        $('.count-url').on('click', function(e){
+            e.preventDefault();
+            var ids = $(this).attr('data-item-id')
+            var click_number = $(this).parent().prev().html()
+            url = $(this).attr('href')
+
+            data = {
+                'ids':ids,
+                'click_number':click_number
+            }
+            $.ajax({
+                type:'GET',
+                url:'{% url "core:clicks" %}',
+                dataType: 'json',
+                data: data,
+                success: function(data){
+                    window.open(url, '_blank').focus();
+
+                    $(e.target).parent().prev().html(data.number)
+                    console.log('AWESOME')
+                }
+            })
+        })
+    })
+
+</script>
+
+
 {% endblock %}
 
 

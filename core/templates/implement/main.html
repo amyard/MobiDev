@@ -32,9 +32,9 @@
                 <a href="{{ url.full_url }}">{{ url.full_url }}</a>
             </td>
             <td style="width:23%;" class="url-tag-text">{{ url.text }}</td>
-            <td style="width:5%;">11</td>
+            <td style="width:5%;" class="clicks">{{ url.clicks }}</td>
             <td style="width:20%;">
-                <a href="{{ url.full_url }}">{{ url.short_url }}</a>
+                <a href="{{ url.full_url }}" data-item-id="{{ url.pk }}" class="count-url">{{ url.short_url }}</a>
             </td>
             <td style="width:15%;">{{ url.created }}</td>
             <td style="width:12%;" class="text-center">

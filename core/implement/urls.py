@@ -1,5 +1,5 @@
 from django.urls import path
-from core.implement.views import MainUrlView, UrlDeleteView, UrlUpdateView, FirstTagCrawler, UrlDetailView
+from core.implement.views import MainUrlView, UrlDeleteView, UrlUpdateView, FirstTagCrawler, UrlDetailView, ClicksCountView
 
 
 app_name='core'
@@ -9,5 +9,6 @@ urlpatterns = [
     path('url_detail/<int:pk>', UrlDetailView.as_view(), name='url_detail'),
     path('delete/<int:pk>', UrlDeleteView.as_view(), name='delete_url'),
     path('update/<int:pk>', UrlUpdateView.as_view(), name='update_url'),
-    path('crawler', FirstTagCrawler.as_view(), name='crawler')
+    path('crawler', FirstTagCrawler.as_view(), name='crawler'),
+    path('clicks', ClicksCountView.as_view(), name='clicks')
 ]
