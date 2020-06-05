@@ -3,7 +3,7 @@ bs4==0.0.1
 certifi==2019.3.9
 chardet==3.0.4
 decorator==4.4.0
-Django==2.2.1
+Django==2.2.13
 django-bootstrap-modal-forms==1.4.2
 django-compat==1.0.15
 django-crispy-forms==1.7.2
